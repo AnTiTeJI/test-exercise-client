@@ -1,4 +1,3 @@
-Запуск приложения: http://localhost:5000
 В config.json:
 
 - SERVER_URL: путь сервера
