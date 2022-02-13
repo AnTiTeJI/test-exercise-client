@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import styled from "styled-components";
+import { useAppSelector } from "../../../hooks/useAppStore";
 import { Post } from "../../../types";
 import Loader from "../primitive/Loader/Loader";
 import PostItem from "./PostItem";
@@ -16,10 +17,14 @@ const StyledPostsList = styled.div`
 `;
 
 const PostsList: FC<PostsListProps> = function ({ postsList }) {
+  const { isFailed } = useAppSelector((state) => state.api);
+  useEffect(() => console.log(isFailed), [isFailed]);
   return (
     <StyledPostsList>
-      {postsList && postsList.length > 0 ? (
+      {postsList && postsList.length ? (
         postsList.map((post) => <PostItem key={post.id} post={post} />)
+      ) : isFailed ? (
+        "Empty"
       ) : (
         <Loader />
       )}

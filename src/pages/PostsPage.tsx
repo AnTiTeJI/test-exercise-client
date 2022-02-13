@@ -2,10 +2,9 @@ import { FC, useEffect } from "react";
 import styled from "styled-components";
 import { fetchPosts } from "../API/services/api.post";
 import PostsList from "../components/common/post/PostsList";
-import BasicButton from "../components/common/primitive/BasicButton";
 import { useAppSelector } from "../hooks/useAppStore";
 import config from "../config.json";
-import Loader from "../components/common/primitive/Loader/Loader";
+import PostsLoader from "../components/common/primitive/PostsLoader";
 const StyledPostsPage = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,27 +14,13 @@ const StyledPostsPage = styled.div`
 const PostsPage: FC = function () {
   const { cashPosts, cashPage } = useAppSelector((state) => state.post);
   useEffect(() => {
-    console.log(cashPosts.length);
+    console.log(cashPosts);
     if (cashPosts.length === 0) fetchPosts(config.COUNT_FETCH_POSTS, cashPage);
   });
   return (
     <StyledPostsPage>
-      {cashPosts.length ? (
-        <>
-          <PostsList postsList={cashPosts} />
-          <div>
-            <BasicButton
-              onClickHandler={() =>
-                fetchPosts(config.COUNT_FETCH_POSTS, cashPage)
-              }
-            >
-              Load posts
-            </BasicButton>
-          </div>
-        </>
-      ) : (
-        <Loader />
-      )}
+      <PostsList postsList={cashPosts} />
+      <PostsLoader fetch="all" />
     </StyledPostsPage>
   );
 };

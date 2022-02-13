@@ -8,6 +8,7 @@ import { privateAppRoutes } from "../components/router/routes";
 import { useAppSelector } from "../hooks/useAppStore";
 import config from "../config.json";
 import Loader from "../components/common/primitive/Loader/Loader";
+import PostsLoader from "../components/common/primitive/PostsLoader";
 
 const StyledPostsUserPage = styled.div`
   display: flex;
@@ -33,15 +34,7 @@ const PostsUserPage: FC = function () {
       {userPosts && userPosts.length ? (
         <>
           <PostsList postsList={userPosts} />
-          <div>
-            <BasicButton
-              onClickHandler={() =>
-                fetchUserPosts(id, config.COUNT_FETCH_POSTS, userPage)
-              }
-            >
-              Load posts
-            </BasicButton>
-          </div>
+          <PostsLoader id={id} fetch="user" />
         </>
       ) : (
         <Loader />
