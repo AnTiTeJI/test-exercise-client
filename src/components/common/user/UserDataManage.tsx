@@ -6,13 +6,28 @@ import { SwitchInputMode } from "../primitive/SwitchInput";
 interface UserDetailProps {
   mode: SwitchInputMode;
   setMode: (value: SwitchInputMode) => void;
+  userHandler: () => void;
+  passHandler: () => void;
 }
 
-const UserDetail: FC<UserDetailProps> = function ({ mode, setMode }) {
+const UserDetail: FC<UserDetailProps> = function ({
+  mode,
+  setMode,
+  userHandler,
+  passHandler,
+}) {
   return (
     <LineField>
       {mode === "input" && (
-        <BasicButton onClickHandler={() => setMode("label")}>Save</BasicButton>
+        <BasicButton
+          onClickHandler={() => {
+            setMode("label");
+            userHandler();
+            passHandler();
+          }}
+        >
+          Save
+        </BasicButton>
       )}
       <BasicButton
         cancelMode={mode === "input" ? true : false}

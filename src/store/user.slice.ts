@@ -35,8 +35,8 @@ export const userSlice = createSlice({
       state.nickname = action.payload.nickname;
       state.image = action.payload.image;
     },
-    setImage: (state: userState, action: PayloadAction<string>) => {
-      state.image = action.payload;
+    setImage: (state: userState, action: PayloadAction<{ image: string }>) => {
+      state.image = action.payload.image;
     },
   },
 });

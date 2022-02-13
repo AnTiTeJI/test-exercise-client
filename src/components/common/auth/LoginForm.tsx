@@ -5,16 +5,16 @@ import BasicButton from "../primitive/BasicButton";
 import BasicInput from "../primitive/BasicInput";
 import BasicLabel from "../primitive/BasicLabel";
 import {
-  userFormData,
-  UserLoginBody,
-  UserRegistrationBody,
-} from "../../../types/api";
-import {
   postUserLogin,
   postUserRegistration,
 } from "../../../API/services/api.user";
 import ColumnField from "../primitive/ColumnField";
 import LineField from "../primitive/LineField";
+import {
+  userFormData,
+  UserLoginBody,
+  UserRegistrationBody,
+} from "../../../types";
 
 const StyledForm = styled.form`
   background: ${lightGreenColor};

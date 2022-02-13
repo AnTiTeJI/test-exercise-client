@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import AuthWrapper from "./components/AuthWrapper";
 import AppRouter from "./components/router/AppRouter";
-import { store } from "./store/store";
+import { store } from "./store/$store";
 function App() {
   return (
     <Provider store={store}>

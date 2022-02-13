@@ -1,6 +1,6 @@
 import decode from "jwt-decode";
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
-import { dispatch } from "../store/store";
+import { dispatch } from "../store/$store";
 import { setIsAuth, setUserData } from "../store/user.slice";
 import { UserData } from "../types";
 import config from "../config.json";

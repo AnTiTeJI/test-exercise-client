@@ -17,7 +17,7 @@ const Header: FC = function () {
   return (
     <StyledHeaderWrapper>
       <StyledHeader className="container">
-        <Logo>Blog</Logo>
+        <Logo />
         {isAuth ? (
           <StyledNav>
             <HeaderLink

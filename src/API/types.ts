@@ -6,7 +6,7 @@ export interface Cook {
 
 export type IPayload = boolean | string;
 
-export interface IParam {
+export interface IQuery {
   [key: string]: string | number;
 }
 
@@ -14,8 +14,8 @@ export interface IAxiosApiWrapper {
   method: Method;
   url: string;
   data?: unknown;
-  params?: IParam;
-  contentType?: string;
+  query?: IQuery;
+  contentType?: "application/json" | "multipart/form-data";
 }
 
 export interface IToken {

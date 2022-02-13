@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { User } from "../../../types";
-import { PasswordChangeBody } from "../../../types/api";
+import { User, UserChangePassword } from "../../../types";
 import BasicInput from "../primitive/BasicInput";
 import BasicLabel from "../primitive/BasicLabel";
 import ColumnField from "../primitive/ColumnField";
@@ -9,16 +8,20 @@ import SwitchInput, { SwitchInputMode } from "../primitive/SwitchInput";
 
 interface UserDataViewProps extends User {
   mode: SwitchInputMode;
-  state: PasswordChangeBody;
-  setter: (value: PasswordChangeBody) => void;
+  userData: User;
+  userDataSetter: (value: User) => void;
+  passData: UserChangePassword;
+  passDataSetter: (value: UserChangePassword) => void;
 }
 
 const UserDataView: FC<UserDataViewProps> = function ({
   nickname,
   email,
   mode,
-  state,
-  setter,
+  userData,
+  userDataSetter,
+  passData,
+  passDataSetter,
 }) {
   return (
     <LineField>
@@ -37,7 +40,9 @@ const UserDataView: FC<UserDataViewProps> = function ({
           mode={mode}
           name="nickname"
           type="text"
-          onChangeHandler={(e) => console.log(e)}
+          onChangeHandler={(e) =>
+            userDataSetter({ ...userData, nickname: e.target.value })
+          }
         >
           {nickname}
         </SwitchInput>
@@ -45,7 +50,9 @@ const UserDataView: FC<UserDataViewProps> = function ({
           mode={mode}
           name="email"
           type="text"
-          onChangeHandler={(e) => console.log(e)}
+          onChangeHandler={(e) =>
+            userDataSetter({ ...userData, email: e.target.value })
+          }
         >
           {email}
         </SwitchInput>
@@ -57,7 +64,7 @@ const UserDataView: FC<UserDataViewProps> = function ({
               defaultValue=""
               autocomplete={false}
               onChangeHandler={(e) =>
-                setter({ ...state, prevPassword: e.target.value })
+                passDataSetter({ ...passData, prevPassword: e.target.value })
               }
             />
             <BasicInput
@@ -66,7 +73,7 @@ const UserDataView: FC<UserDataViewProps> = function ({
               defaultValue=""
               autocomplete={false}
               onChangeHandler={(e) =>
-                setter({ ...state, newPassword: e.target.value })
+                passDataSetter({ ...passData, newPassword: e.target.value })
               }
             />
           </>

@@ -8,10 +8,10 @@ export const publicAppRoutes = {
   AuthPage: "/auth",
   HomePage: "/posts",
   PostsPage: "/:id/posts",
-  DetailPostPage: "posts/:id",
+  DetailPostPage: "/posts/post/:id",
 };
 
 export const privateAppRoutes = {
-  CreatePostPage: ":id/create",
+  CreatePostPage: "/posts/create",
   UserPage: "/user",
 };

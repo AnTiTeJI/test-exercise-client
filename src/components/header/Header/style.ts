@@ -9,7 +9,7 @@ export const StyledHeaderWrapper = styled.div`
   right: 0;
   position: fixed;
   background: ${GreenColor};
-  z-index: 1;
+  z-index: 3;
 `;
 export const StyledHeader = styled.header`
   width: 100%;

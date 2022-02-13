@@ -24,6 +24,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     background: ${(props) =>
       props.cancelMode ? DarkRedColor : DarkGreenColor};
   }
+  transition: all 0.2s ease-in-out;
 `;
 
 interface BasicButtonProps {

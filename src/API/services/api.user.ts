@@ -1,8 +1,14 @@
 import decode from "jwt-decode";
-import { dispatch } from "../../store/store";
+import { dispatch } from "../../store/$store";
 import { setImage, setIsAuth, setUserData } from "../../store/user.slice";
-import { UserData } from "../../types";
-import { UserLoginBody, UserRegistrationBody } from "../../types/api";
+import {
+  User,
+  UserData,
+  UserLoginBody,
+  UserChangePassword,
+  UserRegistrationBody,
+} from "../../types";
+
 import { ApiWrapper } from "../custom.api";
 import { userRoutes } from "./$api.routes";
 
@@ -51,14 +57,34 @@ export async function fetchUserDetails() {
 export async function postUserImage(file: FileList | null) {
   if (file) {
     const formData = new FormData();
-    formData.append("image", file[0]);
-    console.log("Send photo");
-    const data = await ApiWrapper<{ image: string }>({
-      method: "post",
-      url: "/user/image",
-      data: formData,
-      contentType: "multipart/form-data",
-    });
-    if (data) dispatch(setImage(data.image));
+    formData.set("image", file[0]);
+    await ApiWrapper<{ image: string }>(
+      {
+        method: "post",
+        url: userRoutes.AddImage,
+        data: formData,
+        contentType: "multipart/form-data",
+      },
+      setImage
+    );
   }
+}
+
+export async function putUserChangeData(body: User) {
+  await ApiWrapper<UserData>(
+    {
+      method: "put",
+      url: userRoutes.changeData,
+      data: body,
+    },
+    setUserData
+  );
+}
+
+export async function putUserChangePassword(body: UserChangePassword) {
+  await ApiWrapper<UserData>({
+    method: "put",
+    url: userRoutes.changePass,
+    data: body,
+  });
 }
