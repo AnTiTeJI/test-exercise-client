@@ -17,16 +17,15 @@ const StyledPostsList = styled.div`
 `;
 
 const PostsList: FC<PostsListProps> = function ({ postsList }) {
-  const { isFailed } = useAppSelector((state) => state.api);
-  useEffect(() => console.log(isFailed), [isFailed]);
+  const { isLoading } = useAppSelector((state) => state.api);
   return (
     <StyledPostsList>
       {postsList && postsList.length ? (
         postsList.map((post) => <PostItem key={post.id} post={post} />)
-      ) : isFailed ? (
-        "Empty"
-      ) : (
+      ) : isLoading ? (
         <Loader />
+      ) : (
+        "Empty"
       )}
     </StyledPostsList>
   );

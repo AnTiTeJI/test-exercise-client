@@ -16,11 +16,17 @@ const PostsPage: FC = function () {
   useEffect(() => {
     console.log(cashPosts);
     if (cashPosts.length === 0) fetchPosts(config.COUNT_FETCH_POSTS, cashPage);
-  });
+  }, []);
   return (
     <StyledPostsPage>
-      <PostsList postsList={cashPosts} />
-      <PostsLoader fetch="all" />
+      {cashPosts && cashPosts.length ? (
+        <>
+          <PostsList postsList={cashPosts} />
+          <PostsLoader fetch="all" />
+        </>
+      ) : (
+        "Empty"
+      )}
     </StyledPostsPage>
   );
 };

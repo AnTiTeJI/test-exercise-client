@@ -1,4 +1,4 @@
 {
-    "SERVER_URL": "http://localhost:5000",
-    "COUNT_FETCH_POSTS" : 3
+    "SERVER_URL": "https://aqueous-headland-61012.herokuapp.com",
+    "COUNT_FETCH_POSTS" : 2
 }
