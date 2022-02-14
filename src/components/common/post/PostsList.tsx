@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../../../hooks/useAppStore";
 import { Post } from "../../../types";
