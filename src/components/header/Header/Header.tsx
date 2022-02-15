@@ -4,6 +4,7 @@ import Logo from "../Logo";
 import userSvg from "../../../images/user.svg";
 import blogSvg from "../../../images/blog.svg";
 import { useAppSelector } from "../../../hooks/useAppStore";
+import config from "../../../config.json";
 import {
   StyledHeader,
   StyledHeaderWrapper,
@@ -24,7 +25,7 @@ const Header: FC = function () {
               item={
                 <StyledImg
                   border={image ? true : false}
-                  src={image ? image : userSvg}
+                  src={image ? `${config.SERVER_URL}/${image}` : userSvg}
                 ></StyledImg>
               }
             />

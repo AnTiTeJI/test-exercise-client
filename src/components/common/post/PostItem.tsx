@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { GreenColor } from "../../../style";
 import LineField from "../primitive/LineField";
 import { Link } from "react-router-dom";
+import config from "../../../config.json";
 interface PostItemProps {
   post: Post;
 }
@@ -37,7 +38,7 @@ const PostItem: FC<PostItemProps> = function ({ post }) {
     <StyledPostItem>
       {post.image && (
         <StyledImageLink to={`/posts/post/${post.id}`}>
-          <StyledImage src={post.image} />
+          <StyledImage src={`${config.SERVER_URL}/${post.image}`} />
         </StyledImageLink>
       )}
       <LineField>

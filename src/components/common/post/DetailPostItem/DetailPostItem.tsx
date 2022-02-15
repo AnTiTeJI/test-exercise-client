@@ -5,6 +5,7 @@ import BasicTextArea from "../../primitive/BasicTextArea";
 import BasicButton from "../../primitive/BasicButton";
 import { postAddComment } from "../../../../API/services/api.post";
 import { useAppSelector } from "../../../../hooks/useAppStore";
+import config from "../../../../config.json";
 import { v4 } from "uuid";
 import {
   DescWrapper,
@@ -48,7 +49,7 @@ const DetailPostItem: FC<DetailPostItemProps> = function ({ postData }) {
   return (
     <StyledPostWrapper>
       <StyledPost>
-        <StyledImage src={post.image} />
+        <StyledImage src={`${config.SERVER_URL}/${post.image}`} />
         <DescWrapper>
           <LineField>
             <Title>{post.title}</Title>
