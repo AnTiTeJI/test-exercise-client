@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Post } from "../../../types";
-import config from "../../../config.json";
 import styled from "styled-components";
 import { GreenColor } from "../../../style";
 import LineField from "../primitive/LineField";
@@ -38,7 +37,7 @@ const PostItem: FC<PostItemProps> = function ({ post }) {
     <StyledPostItem>
       {post.image && (
         <StyledImageLink to={`/posts/post/${post.id}`}>
-          <StyledImage src={`${config.SERVER_URL}/${post.image}`} />
+          <StyledImage src={post.image} />
         </StyledImageLink>
       )}
       <LineField>

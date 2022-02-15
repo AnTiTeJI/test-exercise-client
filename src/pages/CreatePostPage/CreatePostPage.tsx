@@ -16,7 +16,6 @@ import {
   StyledPostCreatorWrapper,
 } from "./style";
 import { Link } from "react-router-dom";
-
 interface CreatePostPageProps {
   mode?: boolean;
 }

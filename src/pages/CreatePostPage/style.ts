@@ -59,6 +59,6 @@ export const StyledManageWrapper = styled.div`
 export const StyledImage = styled.img`
   border: 1px solid #000;
   border-radius: 12px;
-  width: 100%;
   z-index: 1;
+  height: 100vh;
 `;

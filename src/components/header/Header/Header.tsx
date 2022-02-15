@@ -10,7 +10,6 @@ import {
   StyledImg,
   StyledNav,
 } from "./style";
-import config from "../../../config.json";
 
 const Header: FC = function () {
   const { id, isAuth, image } = useAppSelector((state) => state.user);
@@ -25,7 +24,7 @@ const Header: FC = function () {
               item={
                 <StyledImg
                   border={image ? true : false}
-                  src={image ? `${config.SERVER_URL}/${image}` : userSvg}
+                  src={image ? image : userSvg}
                 ></StyledImg>
               }
             />

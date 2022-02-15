@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { Comment, PostDetail } from "../../../../types";
-import config from "../../../../config.json";
 import LineField from "../../primitive/LineField";
 import BasicTextArea from "../../primitive/BasicTextArea";
 import BasicButton from "../../primitive/BasicButton";
@@ -32,9 +31,14 @@ const DetailPostItem: FC<DetailPostItemProps> = function ({ postData }) {
 
   function addComment() {
     if (comment.message) {
-      if (nickname)
+      if (nickname) {
         postAddComment(post.id, { author: nickname, message: comment.message });
-      else postAddComment(post.id, comment);
+        postData.comments.push({ author: nickname, message: comment.message });
+      } else {
+        postAddComment(post.id, comment);
+        postData.comments.push(comment);
+      }
+
       setComment({
         author: "Guest",
         message: "",
@@ -44,7 +48,7 @@ const DetailPostItem: FC<DetailPostItemProps> = function ({ postData }) {
   return (
     <StyledPostWrapper>
       <StyledPost>
-        <StyledImage src={`${config.SERVER_URL}/${post.image}`} />
+        <StyledImage src={post.image} />
         <DescWrapper>
           <LineField>
             <Title>{post.title}</Title>
